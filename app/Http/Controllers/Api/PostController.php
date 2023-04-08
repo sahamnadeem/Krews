@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::with('images')->orderBy('created_at','desc')->paginate(10);
+        return Post::with('images','user')->orderBy('created_at','desc')->paginate(10);
     }
 
     /**
@@ -63,7 +63,7 @@ class PostController extends Controller
 
                 return response()->json([
                     'message'=>'Successfully created post!',
-                    'post'=> $post->load('images'),
+                    'post'=> $post->load('images','user'),
                 ],200);
             }
         }catch(Exception $ex){
@@ -108,7 +108,7 @@ class PostController extends Controller
             if($post->update($request->all())){
                 return response()->json([
                     'message'=>'Successfully Updated Post!',
-                    'post'=> $post->load('images'),
+                    'post'=> $post->load('images','user'),
                 ],200);
             }
         }catch(Exception $ex){
