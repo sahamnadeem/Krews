@@ -37,6 +37,8 @@ class User extends Authenticatable
         'updated_at'
     ];
 
+    protected $appends = ['is_admin'];
+
     /**
      * The attributes that should be cast.
      *
@@ -48,5 +50,9 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany(Post::class,'user_id','id');
+    }
+
+    public function getIsAdminAttribute(){
+        return $this->hasRole('admin');
     }
 }
