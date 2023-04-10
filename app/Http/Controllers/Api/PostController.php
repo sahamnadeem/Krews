@@ -139,7 +139,7 @@ class PostController extends Controller
         }else{
             return response()->json([
                 'message'=>'Can not deleted Post!'
-            ],200);
+            ],412);
         }
     }
 }
