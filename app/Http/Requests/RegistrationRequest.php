@@ -26,7 +26,7 @@ class RegistrationRequest extends FormRequest
         return [
             "name"=>"required|string|min:3|max:50",
             "email" => "email|required|unique:users,email,except,id",
-            "password" => "required|confirmed|min:8|max:64|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!@#$&()\\-`.+,/\"]).*$/",
+            "password" => "required|confirmed|min:8|max:64|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%?.@&:;~%$]).*$/",
         ];
     }
 }
